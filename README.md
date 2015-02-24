@@ -1,9 +1,9 @@
 Environment:
 
-OSX 64 bit
-Node.js v0.10.35/Node.js v0.12.0
+- OSX 64 bit
+- Node.js v0.10.35/Node.js v0.12.0
 
-To run:
+To run test:
 
 ```
 npm install
