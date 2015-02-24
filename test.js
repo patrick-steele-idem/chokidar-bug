@@ -4,6 +4,7 @@ var fs = require('fs');
 
 var generatedDir = nodePath.join(__dirname, 'generated');
 var nodeModulesDir = nodePath.join(__dirname, 'node_modules');
+var gitDir = nodePath.join(__dirname, '.git');
 
 try {
     fs.mkdirSync(generatedDir);
@@ -27,6 +28,8 @@ var watcher = chokidar.watch(
                 ignored = true;
             } else if (path === nodeModulesDir) {
                 ignored = true;
+            } else if (path === gitDir) {
+                ignored = true;
             }
 
             console.log('IGNORE ' + path + '?: ' + ignored);
@@ -43,7 +46,7 @@ events.forEach(function(event) {
 
         var dirname = nodePath.dirname(path);
         if (dirname === generatedDir) {
-            throw new Error('Modification to file nested within a ignored directory not ignored! ' + path);
+            throw new Error('Modification to file nested within an ignored directory not ignored! ' + path);
         }
     });
 });
